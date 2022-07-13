@@ -8,5 +8,5 @@ class handler(BaseHTTPRequestHandler):
         self.send_header('Content-type', 'text/plain')
         self.end_headers()
         message = "Hello World, my first bit of code.."
-        self.wfile.write(message)
+        self.wfile.write(message.encode())
         return
