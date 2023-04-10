@@ -9,7 +9,7 @@ class handler(BaseHTTPRequestHandler):
     def do_GET(self):
         s = self.path
         url_components = parse.urlsplit(s)
-        query_string_list = parse.parse_qsl(url_components)
+        query_string_list = parse.parse_qsl(url_components.query)
         given_dictionary = dict(query_string_list)
         name = given_dictionary.get('name')
 
