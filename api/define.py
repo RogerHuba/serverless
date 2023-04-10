@@ -12,6 +12,8 @@ class handler(BaseHTTPRequestHandler):
         given_dictionary = dict(query_string_list)
         word = given_dictionary.get('word')
 
-
+        self.send_response(200)
+        self.send_header('Content-type', 'text/plain')
+        self.end_headers()
         self.wfile.write(word.encode())
         return
