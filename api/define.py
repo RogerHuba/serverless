@@ -15,13 +15,14 @@ class handler(BaseHTTPRequestHandler):
 
         base_url = "https://api.dictionaryapi.dev/api/v2/entries/en/"
         new_url = base_url + word
-        req = requests.get(new_url)
-        data = req.json
-        definitions = []
-        for word_data in data:
-            definition = word_data["meanings"][0]["definitions"][0]["definition"]
-            definitions.append(definition)
-        message = str(definitions)
+        message = str(new_url)
+        # req = requests.get(new_url)
+        # data = req.json
+        # definitions = []
+        # for word_data in data:
+        #     definition = word_data["meanings"][0]["definitions"][0]["definition"]
+        #     definitions.append(definition)
+        # message = str(definitions)
 
         self.send_response(200)
         self.send_header('Content-type', 'text/plain')
