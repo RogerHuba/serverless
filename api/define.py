@@ -13,9 +13,9 @@ class handler(BaseHTTPRequestHandler):
         given_dictionary = dict(query_string_list)
         word = given_dictionary.get('word')
 
-        base_url = "https://api.dictionaryapi.dev/api/v2/entries/en/"
-        new_url = base_url + word
-        message = str(new_url)
+        # base_url = "https://api.dictionaryapi.dev/api/v2/entries/en/"
+        # new_url = base_url + word
+        #
         # req = requests.get(new_url)
         # data = req.json
         # definitions = []
@@ -27,7 +27,7 @@ class handler(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header('Content-type', 'text/plain')
         self.end_headers()
-        self.wfile.write(message.encode())
+        self.wfile.write(word.encode())
         return
 
     # [{"word": "python", "phonetics": [
