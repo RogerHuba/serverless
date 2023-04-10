@@ -9,12 +9,16 @@ class handler(BaseHTTPRequestHandler):
     def do_GET(self):
         s = self.path
         url_components = parse.urlsplit(s)
+        query_string_list = parse.parse_qsl(url_components)
+        given_dictionary = dict(query_string_list)
+        name = given_dictionary.get('name')
 
-
-
-
+        if name:
+            message = f"Hello {name}.  How are you?"
+        else:
+            message = "Hello Stranger.  Stranger Danger!"
         self.send_response(200)
         self.send_header('Content-type', 'text/plain')
         self.end_headers()
-        self.wfile.write(url_components.encode())
+        self.wfile.write(message.encode())
         return
